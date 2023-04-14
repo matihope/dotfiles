@@ -11,16 +11,16 @@ echo ".cfg" >> .gitignore
 git clone --bare https://github.com/matihope/dotfiles.git $HOME/.cfg
 
 # For this scope
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # If there were any configs already,
 # make a backup of them.
 mkdir -p .config-backup && \
-config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
+$config checkout 2>&1 | grep -e "\s+\." | awk {'print $1'} | \
 xargs -I{} mv {} .config-backup/{}
 
-config checkout
-config config --local status.showUntrackedFiles no
+$config checkout
+$config config --local status.showUntrackedFiles no
 
 # cleanup
 rm install.bash
