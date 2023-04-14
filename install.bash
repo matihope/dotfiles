@@ -21,3 +21,7 @@ xargs -I{} mv {} .config-backup/{}
 
 config checkout
 config config --local status.showUntrackedFiles no
+
+# cleanup
+rm install.bash
+rm README.md
