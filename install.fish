@@ -24,5 +24,5 @@ config checkout
 config config --local status.showUntrackedFiles no
 
 # cleanup
-rm install.bash
+rm install.fish
 rm README.md
