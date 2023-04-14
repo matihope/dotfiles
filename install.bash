@@ -16,7 +16,7 @@ config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # If there were any configs already,
 # make a backup of them.
 mkdir -p .config-backup && \
-$config checkout 2>&1 | grep -e "\s+\." | awk {'print $1'} | \
+$config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | \
 xargs -I{} mv {} .config-backup/{}
 
 $config checkout
