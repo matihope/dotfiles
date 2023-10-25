@@ -3,6 +3,7 @@
 # Thanks to https://www.atlassian.com/git/tutorials/dotfiles
 # for their great tutorial!
 
+cd $HOME
 
 # So that we don't create weird recursion problems
 echo ".cfg" >> .gitignore
