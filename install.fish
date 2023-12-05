@@ -9,7 +9,7 @@ cd $HOME
 echo ".cfg" >> .gitignore
 
 # Clone
-git clone --bare https://github.com/matihope/dotfiles.git $HOME/.cfg
+git clone --bare git@github.com:matihope/dotfiles.git $HOME/.cfg
 
 # For this scope
 alias conf_path="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
