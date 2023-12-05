@@ -17,3 +17,5 @@ abbr sp "sudo pacman"
 abbr n "nvim"
 abbr sn "sudo nvim"
 abbr ss "sudo systemctl"
+
+starship init fish | source
