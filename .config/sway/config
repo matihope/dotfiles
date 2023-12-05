@@ -236,11 +236,14 @@ bindsym $mod+u border pixel 3
 bindsym $mod+z border none
 bindsym $mod+y fullscreen disable; floating enable;
 
+bindsym $mod+n gaps inner all set 0
+
 # Window rules
 for_window [class="^.*"] border pixel 3
-for_window [class="code-url-handler"] move container to workspace number 2
-for_window [class="Alacritty"] move to workspace number 1
-assign [class="Alacritty"] 1
+assign [app_id="Alacritty"] → workspace number 1
+assign [app_id="code-url-handler"] → workspace number 2
+assign [app_id="brave-browser"] → workspace number 3
+assign [app_id="org.gnome.Nautilus"] → workspace number 4
 
 bar swaybar_command waybar
 
