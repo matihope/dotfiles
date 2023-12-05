@@ -9,13 +9,11 @@ window:
 
 font:
   size: 12
-  family: "Monaspace Argon"
-  offset:
-    x: 0
-    y: 0
-  glyph_offset:
-    x: 0
-    y: 0
+
+  normal:
+    family: "Monaspace Neon"
+    style: Regular
+
 colors:
     primary:
         background: "#1E1E2E" # base
