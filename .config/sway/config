@@ -1,4 +1,4 @@
-# Arch dependencies: wofi swayidle swaylock-effects waybar alacritty grim wl-clipboard wob swayosd
+# Arch dependencies: wofi swayidle swaylock-effects waybar alacritty grim wl-clipboard wob swaync
 
 ### Variables
 #
@@ -17,7 +17,7 @@ set $term alacritty
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi --show drun | xargs swaymsg exec --
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg $HOME/.config/sway/wallpapers/wilderness_sunrise.jpg fill
 # output * bg /home/mateusz/instalki/dotfilesLEGACY/.config/i3/wallpaper4.jpg fill
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
@@ -47,7 +47,7 @@ input "1739:52552:SYNA1D31:00_06CB:CD48_Touchpad" {
     middle_emulation enabled
 }
 
-# Always pl layout and flat acceleration 
+# Always pl layout and flat acceleration
 input * {
     xkb_layout pl
     accel_profile "flat"
@@ -59,42 +59,27 @@ bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
 
 # Sound setting
 
-#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-#bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-#bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-#bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-#bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-#bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-#bindsym XF86AudioPlay exec playerctl play-pause
-#bindsym XF86AudioNext exec playerctl next
-#bindsym XF86AudioPrev exec playerctl previous
-#bindsym XF86Search exec bemenu-run
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Search exec $menu
 
-# Sink volume toggle mute
-bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
-# Source volume toggle mute
-bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
-
-# Volume raise with max value
-bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise --max-volume 120
-# Volume lower with max value
-bindsym XF86AudioLowerVolume exec swayosd-client --output-volume lower --max-volume 120
-
-# Capslock (If you don't want to use the backend)
-bindsym --release Caps_Lock exec swayosd-client --caps-lock
-
-# Brightness raise
-bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
-# Brightness lower
-bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
 # ----- Custom execs -----
 
 # Night shift - Warsaw latitude and longitude
 exec wlsunset -l 52.2 -L 21.0 -t 1500
 
-# For keypresses
-exec swayosd-server
+# Notification Daemon
+exec swaync
 
 #
 # Basics:
@@ -240,12 +225,20 @@ bindsym $mod+n gaps inner all set 0
 
 # Window rules
 for_window [class="^.*"] border pixel 3
-assign [app_id="Alacritty"] → workspace number 1
-assign [app_id="code-url-handler"] → workspace number 2
-assign [app_id="brave-browser"] → workspace number 3
-assign [app_id="org.gnome.Nautilus"] → workspace number 4
+assign [app_id="Alacritty"] → 1
+assign [app_id="code-url-handler"] → 2
+assign [app_id="brave-browser"] → 3
+assign [app_id="org.gnome.Nautilus"] → 4
+for_window [app_id="galculator"] floating enable
+
+for_window [app_id="gtk_chat_app"] floating enable
+for_window [app_id="gtk_chat_app"] border none
+
+for_window [window_type="dialog"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_type="dialog"] border none
+for_window [window_role="dialog"] border none
 
 bar swaybar_command waybar
 
 include /etc/sway/config.d/*
-
