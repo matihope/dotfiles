@@ -9,21 +9,16 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+
 set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi --show drun | xargs swaymsg exec --
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+
 output * bg $HOME/.config/sway/wallpapers/wilderness_sunrise.jpg fill
-# output * bg /home/mateusz/instalki/dotfilesLEGACY/.config/i3/wallpaper4.jpg fill
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # PC OUTPUTS:
 output DP-4 scale 2 pos 1920,0
-output DP-5 pos 0,0 scale 1 resolution 3840x2160
+output DP-5 pos 0,0 scale 1
 
 ### Idle configuration
 exec swayidle -w \
@@ -80,6 +75,8 @@ exec wlsunset -l 52.2 -L 21.0 -t 1500
 
 # Notification Daemon
 exec swaync
+
+# xwayland disable
 
 #
 # Basics:
