@@ -1,4 +1,4 @@
-# Arch dependencies: wofi swayidle swaylock-effects waybar alacritty grim wl-clipboard wob swaync
+# Arch dependencies: wofi brightnessctl swayidle wlsunset swaylock-effects waybar alacritty grim wl-clipboard wob swaync
 
 ### Variables
 #
