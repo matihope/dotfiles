@@ -18,4 +18,10 @@ abbr n "nvim"
 abbr sn "sudo nvim"
 abbr ss "sudo systemctl"
 
+function fish_greeting
+
+end
+
+
 starship init fish | source
+zoxide init --cmd cd fish | source
