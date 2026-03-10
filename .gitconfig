@@ -1,0 +1,7 @@
+[user]
+	email = mateusz.kolpa@wp.pl
+	name = Mateusz Kolpa
+[alias]
+    st = status
+    co = checkout
+    c = commit -m
