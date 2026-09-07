@@ -20,3 +20,4 @@ if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTI
 then
 	exec fish
 fi
+. "$HOME/.cargo/env"
